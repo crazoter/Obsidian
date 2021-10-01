@@ -1,6 +1,4 @@
-![[imbalanced-learn.org-over_sampling.pdf]]
-
----
+#ML #data-augmentation 
 
 #### Page 1
 

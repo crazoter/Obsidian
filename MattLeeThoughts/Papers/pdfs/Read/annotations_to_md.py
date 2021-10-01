@@ -25,12 +25,16 @@ __version__ = "1.0.1"
 # https://stackoverflow.com/questions/50801270/extract-comments-from-pdf
 import argparse
 import fitz
+from pyhtml2pdf import converter
+from multiprocessing import Pool
 import os
 from shutil import copyfile
+import urllib.parse
 
 # From https://github.com/pymupdf/PyMuPDF/issues/318#issuecomment-658781494
 _threshold_intersection = 0.9  # if the intersection is large enough.
 link_search_padding = 2
+print_multiproc_pool = 5
 
 def _check_contain(r_word, points):
     """If `r_word` is contained in the rectangular area.
@@ -81,6 +85,11 @@ def _extract_annot(annot, words_on_page):
 
     return sentence
 
+def convert_if_arxiv(url):
+    if "arxiv.org" in url:
+        return f"https://arxiv.org/pdf/{url.split('/')[-1]}.pdf"
+    return url
+
 # Helper class for specifying markdown
 class MarkdownPiece:
     def __init__(self, text, page_map_links=None, page_no=None, newlines=0, is_quote=False, add_link=False):
@@ -91,6 +100,7 @@ class MarkdownPiece:
         self.newlines = '\n' * newlines
         # Generate linked text
         self.linked_text = text
+        self.links = {}
         if page_map_links:
             keys_to_delete = []
             for k in page_map_links.keys():
@@ -99,6 +109,7 @@ class MarkdownPiece:
                     keys_to_delete.append(k)
             # I don't want to replace more than once and clutter the notes with links
             for k in keys_to_delete:
+                self.links[k] = page_map_links[k]
                 del page_map_links[k]
 
     def get_text(self, url):
@@ -115,8 +126,13 @@ class MarkdownPiece:
             result += self.newlines
         return result
 
+def print_pdf(pair):
+    # exploratory_filename = urllib.parse.quote_plus(f'{k}'.replace(" ","")) + ".pdf"
+    print(f"Generating exploratory PDF @ {pair[1]}")
+    converter.convert(pair[0], pair[1])
+    return None
 
-def extract_to_md(filepath, outfilepath, filename):
+def extract_to_md(filepath, outfilepath, filename, link_export_folder):
     """
     filepath: full filepath of the file to read annotations from
     outfilepath: path to output the generated markdown
@@ -153,11 +169,13 @@ def extract_to_md(filepath, outfilepath, filename):
             pageHasAnnots = False
             words_on_page = None
             for annot in page.annots():
+                # Add a page header
                 if not pageHasAnnots:
                     pageHasAnnots = True
                     words_on_page = page.getText("words")  # list of words on page
                     output_text.append(MarkdownPiece(f"#### Page {visual_page_num}", newlines=2))
 
+                # Extract the texts
                 comments = annot.info["content"]
                 highlighted_text = _extract_annot(annot, words_on_page)
                 if (len(highlighted_text) > 0):
@@ -175,18 +193,41 @@ def extract_to_md(filepath, outfilepath, filename):
                         )
                     else:
                         output_text.append(MarkdownPiece(comments, map_links, visual_page_num, newlines=2, is_quote=False, add_link=False))
+
+            # Output line break
             if pageHasAnnots:
                 output_text.append(MarkdownPiece('---', newlines=1))
-        if archive_file:
-            # Efficiency is not a concern LOL since when will i have 1 million comments..
-            output_text.insert(0, MarkdownPiece(f"![[{filename}]]\n\n---\n\n"))
 
+        # If needed, output PDF at the start of the generated markdown
+        # if archive_file:
+            # output_text.insert(0, MarkdownPiece(f"![[{filename}]]\n\n---\n\n"))
+
+        # Encode as UTF-8 and output to file as UTF-8
+        map_links = {}  
         for md in output_text:
             # https://stackoverflow.com/questions/5224089/safe-decoding-in-python-symbol-instead-of-exception
             text = md.get_text(page_url).encode().decode("utf-8", "replace")
             outfile.write(text)
 
+            # Collate links from the markdown
+            if md.links:
+                for k in md.links.keys():
+                    if md.links[k] not in map_links:
+                        map_links[md.links[k]] = link_export_folder + '/' + re.sub('[^A-Za-z0-9]+|https?', '', k) + ".pdf"
+
+        # Convert map to list for multiprocessing pool
+        links_to_explore = []
+        for url in map_links:
+            links_to_explore.append((url, convert_if_arxiv(map_links[url])))
+
+        # Actually print the pdfs
+        # Might be a good idea to pool everything at the end? but a global variable would be useful. I'm too lazy to design something complicated
+        with Pool(print_multiproc_pool) as p:
+            print(p.map(print_pdf, links_to_explore))
+
         return archive_file
+
+    # This should never be reached
     return True
 
 if __name__ == "__main__":
@@ -194,6 +235,7 @@ if __name__ == "__main__":
     scriptdir = os.path.dirname(os.path.abspath(__file__))
     archive_folder = os.path.join(scriptdir, "../Archived")
     output_folder = os.path.join(scriptdir, "../Annotations")
+    link_export_folder = os.path.join(scriptdir, "../LinkedPages")
 
     for folder, subfolders, filenames in os.walk(scriptdir):
         for filename in filenames:
@@ -202,7 +244,7 @@ if __name__ == "__main__":
                 archive_filepath = os.path.join(archive_folder, filename)
                 output_filename = os.path.splitext(filename)[0]+'.md'
                 output_filepath = os.path.join(output_folder, output_filename)
-                archive_file = extract_to_md(filepath, output_filepath, filename)
+                archive_file = extract_to_md(filepath, output_filepath, filename, link_export_folder)
                 if archive_file:
                     copyfile(filepath, archive_filepath)
                 print("Extracted {0} to {1}\n".format(filename, output_filepath))

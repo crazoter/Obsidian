@@ -10,5 +10,8 @@
   "obsidian-kanban",
   "obsidian-mind-map",
   "url-into-selection",
-  "obsidian-excalidraw-plugin"
+  "obsidian-excalidraw-plugin",
+  "cm-editor-syntax-highlight-obsidian",
+  "code-block-copy",
+  "text-snippets-obsidian"
 ]

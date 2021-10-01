@@ -24,7 +24,7 @@ L1 (CS4225), L1 (CS5425) - 02/09/2021 - 18:30
 #### Inner Join:
 ![[Pasted image 20210918154353.png|200]]
 Methods for implementing Inner Join with MapReduce:
-##### 1. Map-Side Join
+##### 1. Map / Broadcast Join
 1. Perform the join in the mapper:
 2. Store 1 table in memory as a hashtable, the key being the column to join by
 3. For every record in big table, find tuples that match the join column,

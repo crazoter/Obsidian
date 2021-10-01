@@ -1,3 +1,4 @@
+#meta
 Descript
  ===
 - The tag directory is centralized document to contain all possible tags.
@@ -23,6 +24,7 @@ Tags
 #AI: Artificial Intelligence
 - #ML: Machine Learning
 - #NLP: Natural Language Processing
+- #data-augmentation: anything related to adding / removing data to improve the quality of the dataset
 
 #datascience: Related to data science. 
 #BigData: Related to the use of large distributed data systems.
@@ -45,3 +47,7 @@ Tags
 #algorithms: Stuff on computational algorithms, time and space complexity stuff
 
 #meta: Stuff that should be omitted from the graph view; usually pertains to meta things that are metadata (e.g. this note). 
+
+#exploration: stuff related to searching (for more knowledge)
+
+#debugging: stuff related to debugging (often very situational)

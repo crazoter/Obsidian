@@ -1,0 +1,10 @@
+{
+  "snippets_file": "snip : ```$nl$<!-- File to save snippet to. -->$nl$$tb$.sublime-snippet$nl$<!-- Hello, ${1:this} is a ${2:snippet}. -->$nl$<!-- Snippets can also use context e.g. $SELECTION. See https://sublime-text-unofficial-documentation.readthedocs.io/en/stable/extensibility/snippets.html#environment-variables -->$nl$<snippet>$nl$\t<content><![CDATA[$nl$$tb$$nl$]]></content>$nl$\t<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->$nl$\t<tabTrigger>$tb$</tabTrigger>$nl$\t<!-- Optional: Set a scope to limit where the snippet will trigger -->$nl$\t<scope>source.python</scope>$nl$</snippet>$nl$```",
+  "snippets": [
+    "snip : ```$nl$<!-- File to save snippet to. -->$nl$$tb$.sublime-snippet$nl$<!-- Hello, ${1:this} is a ${2:snippet}. -->$nl$<!-- Snippets can also use context e.g. $SELECTION. See https://sublime-text-unofficial-documentation.readthedocs.io/en/stable/extensibility/snippets.html#environment-variables -->$nl$<snippet>$nl$\t<content><![CDATA[$nl$$tb$$nl$]]></content>$nl$\t<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->$nl$\t<tabTrigger>$tb$</tabTrigger>$nl$\t<!-- Optional: Set a scope to limit where the snippet will trigger -->$nl$\t<scope>source.python</scope>$nl$</snippet>$nl$```"
+  ],
+  "endSymbol": "$end$",
+  "newlineSymbol": "$nl$",
+  "stopSymbol": "$tb$",
+  "useTab": false
+}

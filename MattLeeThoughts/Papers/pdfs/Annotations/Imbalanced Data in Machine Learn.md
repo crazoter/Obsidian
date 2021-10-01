@@ -1,6 +1,4 @@
-![[Imbalanced Data in Machine Learn.pdf]]
-
----
+#ML #data-augmentation
 
 #### Page 1
 
@@ -17,6 +15,8 @@
 #### Page 3
 
 > 7 Over Sampling techniques to handle Imbalanced Data Deep dive analysis of various oversampling techniques towardsdatascience.com (p. 3) 
+
+See more at [[imbalanced-learn.org-over_sampling]].
 
 ```pdf
 {"url": "/Papers/pdfs/Archived/Imbalanced Data in Machine Learn.pdf", "page": 3,
