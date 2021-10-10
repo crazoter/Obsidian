@@ -97,7 +97,6 @@ import os
 from dotenv import load_dotenv
 # .env file contains MY_ENV_VAR="This is my env var content."
 load_dotenv()
-${1:MY_ENV_VAR} = os.getenv("${1:MY_ENV_VAR}")
 ENV = {
 	"${1:MY_ENV_VAR}" = os.getenv("${1:MY_ENV_VAR}"),
 }
@@ -108,6 +107,7 @@ for key in ENV:
 		input("Press Enter to continue...")
 		exit()
 
+${1:MY_ENV_VAR} = ENV["${1:MY_ENV_VAR}"]
 ```
 
 Press any key to continue
