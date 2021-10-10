@@ -7,7 +7,7 @@
 - No fixed schema
 - No relations (tables)
 - Weaker consistency, higher availabilty ([[Strong vs Eventual Consistency]], [[ACID vs BASE]])
-- [[Duplication]] (i.e. denormalization)
+- [[Duplication i.e. Denormalization]] (i.e. denormalization)
 - ![[Pasted image 20210919214751.png]]
 
 ##### Traits

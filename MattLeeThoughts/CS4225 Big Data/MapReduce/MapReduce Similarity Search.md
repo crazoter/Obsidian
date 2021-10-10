@@ -22,7 +22,7 @@ similarity, and vice versa
 3. ![[Pasted image 20210918162222.png|300]]
 
 ##### Jaccard Similarity (between sets of objects)
-1. Set intersection proportion
+1. Proportion of common items
 2. ![[Pasted image 20210918162552.png|400]]
 3. **Jaccard Distance**
 4. ![[Pasted image 20210918162717.png|300]]

@@ -16,3 +16,10 @@ git reset
 ```
 
 without any file name to unstage all due changes. This can come in handy when there are too many files to be listed one by one in a reasonable amount of time.
+
+## Gitignore
+Ignoring files of a certain name regardless of directory
+https://stackoverflow.com/questions/18393498/gitignore-all-the-ds-store-files-in-every-folder-and-subfolder
+````
+**/.DS_Store
+````

@@ -6,5 +6,9 @@
   "foldHeading": true,
   "showLineNumber": true,
   "spellcheck": true,
-  "newFileFolderPath": "attachments"
+  "newFileFolderPath": "attachments",
+  "spellcheckDictionary": [
+    "multiplicatively"
+  ],
+  "alwaysUpdateLinks": true
 }

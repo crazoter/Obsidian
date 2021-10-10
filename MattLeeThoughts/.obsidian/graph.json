@@ -1,6 +1,6 @@
 {
   "collapse-filter": false,
-  "search": "-#meta",
+  "search": "#region",
   "showTags": true,
   "showAttachments": false,
   "hideUnresolved": false,
@@ -17,6 +17,6 @@
   "repelStrength": 14.3092441266599,
   "linkStrength": 1,
   "linkDistance": 250,
-  "scale": 0.1617227058792262,
+  "scale": 0.4095561651239189,
   "close": true
 }

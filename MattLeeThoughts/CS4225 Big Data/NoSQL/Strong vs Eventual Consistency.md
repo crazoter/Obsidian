@@ -10,4 +10,3 @@
 - Weaker consistency 
 - Higher availability
 - In practice, NoSQL systems can be modified to tune this trade-off (tunable consistency)
-- 

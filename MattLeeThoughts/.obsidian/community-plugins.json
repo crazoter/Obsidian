@@ -11,7 +11,9 @@
   "obsidian-mind-map",
   "url-into-selection",
   "obsidian-excalidraw-plugin",
-  "cm-editor-syntax-highlight-obsidian",
   "code-block-copy",
-  "text-snippets-obsidian"
+  "text-snippets-obsidian",
+  "obsidian-codemirror-options",
+  "obsidian-style-settings",
+  "cm-editor-syntax-highlight-obsidian"
 ]

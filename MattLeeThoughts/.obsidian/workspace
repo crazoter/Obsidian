@@ -4,14 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "16b950edd9a7df37",
+        "id": "3260f9ad3641a9bd",
         "type": "leaf",
         "state": {
-          "type": "markdown",
-          "state": {
-            "file": "Reflections/9-24-21.md",
-            "mode": "source"
-          }
+          "type": "empty",
+          "state": {}
         }
       }
     ],
@@ -39,7 +36,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "hadoop",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -68,7 +65,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Reflections/9-24-21.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -85,7 +81,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Reflections/9-24-21.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -107,30 +102,42 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Reflections/9-24-21.md"
-              }
+              "state": {}
             }
           }
         ],
         "currentTab": 3
+      },
+      {
+        "id": "40986a2cd2e55030",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6994c83fcd7308ec",
+            "type": "leaf",
+            "state": {
+              "type": "ob_comments",
+              "state": {}
+            }
+          }
+        ]
       }
     ],
     "direction": "horizontal",
     "width": 343.4486389160156,
     "collapsed": true
   },
-  "active": "16b950edd9a7df37",
+  "active": "3260f9ad3641a9bd",
   "lastOpenFiles": [
-    "Reflections/9-24-21.md",
     "Companies/GovTech/TAP interview prep.md",
-    "Industry Trends/Libraries/GitHub Stats.md",
-    "Snippets/Untitled.md",
+    "Reflections/9-24-21.md",
+    "Snippets/Python General.md",
     "Snippets/Python IO.md",
-    "Scripts/YoutubeAnnotator.md",
-    "Scripts/Lesson 1 - Deep Learning for Coders (2020).md",
-    "AI/Libraries/FastAI/Lecture 1.md",
-    "AI/Libraries/Trends.md",
-    "AI/Libraries/FastAI/Untitled.md"
+    "Life Advice/Tradition.md",
+    "Meta (README INSIDE)/README.md",
+    "Life Advice/Tradition-Old.md",
+    "Snippets/Python Encryption.md",
+    "Snippets/Git.md",
+    "Snippets/Java.md"
   ]
 }

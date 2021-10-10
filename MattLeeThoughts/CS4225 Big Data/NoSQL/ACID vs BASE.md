@@ -1,6 +1,9 @@
 #NoSQL 
 
 [[Strong vs Eventual Consistency]]
+ACID
+atomicity, consistency, isolation, durability
+
 ACID vs BASE: Relational DBMS provide stronger (ACID)
 guarantees, but many NoSQL system relax this to weaker
 
